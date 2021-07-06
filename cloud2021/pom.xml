@@ -11,6 +11,7 @@
   <modules>
     <module>cloud-provider-payment8001</module>
     <module>cloud-consumer-order80</module>
+      <module>cloud-api-commons</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -28,6 +29,7 @@
     <spring.cloud.version>Hoxton.SR1</spring.cloud.version>
     <spring.cloud.alibaba.version>2.1.0.RELEASE</spring.cloud.alibaba.version>
     <mybatis.spring.boot.version>1.3.0</mybatis.spring.boot.version>
+<!--    <project.version>1.0-SNAPSHOT</project.version>-->
   </properties>
 
   <!--子模塊繼承後，提供作用：鎖定版本+子module不用groupId和version-->

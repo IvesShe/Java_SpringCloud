@@ -703,3 +703,71 @@ public class OrderController {
 ![image](./images/20210706205633.png)
 
 ![image](./images/20210706205653.png)
+
+# 新建cloud-api-commons模塊
+
+![image](./images/20210706210832.png)
+
+要將80及8001 entities功能相同的部分(CommonResult、Payment)，抽取出來成一個共用的模塊
+
+![image](./images/20210706210647.png)
+
+# cloud-api-commons - pom.xml
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>cloud2021</artifactId>
+        <groupId>com.ives.springcloud</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>cloud-api-commons</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.1.0</version>
+        </dependency>
+    </dependencies>
+
+</project>
+```
+
+## cloud-api-commons - 拷貝其它工程的entities
+
+![image](./images/20210706212844.png)
+
+
+在右邊maven選單中，先clean再install，並刪除80及8001工程的entities包及裡面的兩個java檔案，並在兩個工程的pom.xml依賴的開頭加上
+
+```xml
+<dependency>
+    <groupId>com.ives.springcloud</groupId>
+    <artifactId>cloud-api-commons</artifactId>
+    <version>${project.version}</version>
+</dependency>
+```
+
+![image](./images/20210706213210.png)
+
+
+IDEA會先報紅字，等一下下，就會重新載到cloud-api-commons這個包裡的entities了
+
+# Eureka 簡介
