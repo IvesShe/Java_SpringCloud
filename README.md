@@ -765,9 +765,10 @@ public class OrderController {
 </dependency>
 ```
 
+IDEA會先報紅字，等一下下，就會重新載到cloud-api-commons這個包裡的entities了
+
+作好以上的步驟，刪除80、8001工程的entities，及修改pom.xml
 ![image](./images/20210706213210.png)
 
-
-IDEA會先報紅字，等一下下，就會重新載到cloud-api-commons這個包裡的entities了
 
 # Eureka 簡介
